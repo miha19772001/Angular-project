@@ -1,0 +1,21 @@
+.header {
+	width: 100%;
+	height: 60px;
+	background-color: #282931;
+	padding: 5px 10px 5px 10px;
+
+	&__body {}
+
+	&__content {
+		font-size: 35px;
+		margin: 7px 10%;
+	}
+
+	&__main {
+		color: #F77F1D;
+	}
+}
+
+.container {
+	width: 100%;
+}

@@ -1,0 +1,36 @@
+<app-header [logo]="logo" [shortLogo]="shortLogo"></app-header>
+<div class="wrapper">
+	<div class="wrapper__pop-up pop-up" id="pop-up">
+		<div class="pop-up__container">
+			<div class="pop-up__rules-of-the-game rules-of-the-game">
+				<div class="rules-of-the-game__block"><u>Цель игры:</u> набрать 10 очков, отбивая мяч от платформ. Не
+					допустив удара мяча о боковые стенки поля.</div>
+				<div class="rules-of-the-game__block"><u>Управление первого игрока:</u> w - вверз; s - вниз;</div>
+				<div class="rules-of-the-game__block"><u>Управление второго игрока:</u> i - вверз; k - вниз;</div>
+			</div>
+			<div class="pop-up__body pop-up-body">
+				<div class="pop-up__message-for-the-players"></div>
+				<button class="pop-up__button" id="button-go-home" routerLink="/home">
+					<img src="assets/img/home_orange.png" alt="">
+				</button>
+				<button class="pop-up__button" id="button-start-game">
+					<img src="assets/img/play.png" alt="">
+				</button>
+				<button class="pop-up__button" (click)="this.reloadPage()">
+					<img src="assets/img/loading_arrow.png" alt="">
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="wrapper__check check">
+		<div class="check__container">
+			<span>{{this.checkPlayers}}</span>
+		</div>
+	</div>
+	<div class="wrapper__field field" id="field">
+		<div class="field__player1" id="player1"></div>
+		<div class="field__center-of-the-field"></div>
+		<div class="field__ball" id="ball"></div>
+		<div class="field__player2" id="player2"></div>
+	</div>
+</div>

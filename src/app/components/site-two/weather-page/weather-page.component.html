@@ -1,0 +1,95 @@
+<div class="wrapper">
+	<app-header [logo]="logo" [shortLogo]="shortLogo"></app-header>
+	<main>
+		<div class="container">
+			<div class="container__content">
+				<div class="container__this-day this-day">
+					<div class="this-day__container">
+						<div class="this-day__temperature">
+							<span>{{this.weather.temp}}</span>
+						</div>
+						<div class="this-day__icon">
+							<img [src]='this.weather.img' alt="" />
+						</div>
+						<div class="this-day__date">
+							<span>{{this.weather.dayOfWeekFullName}}</span>
+						</div>
+						<div class="this-day__city">
+							<span>Нижний Новгород</span>
+						</div>
+					</div>
+				</div>
+				<div class="container__info info">
+					<img class="info__clouds" src="assets/img/clouds.png" alt="">
+					<div class="info__container">
+						<div class="info__thermometer">
+							<div class="info__circle"></div>
+							<div class="info__content">
+								<span>Температура</span>
+							</div>
+							<div class="info__mean">
+								<span>{{this.weather.temp}} как {{this.weather.feels_like}}</span>
+							</div>
+						</div>
+						<div class="info__humidity">
+							<div class="info__circle"></div>
+							<div class="info__content">
+								<span>Давление</span>
+							</div>
+							<div class="info__mean">
+								<span>{{this.weather.pressure}} мм.рт.ст.</span>
+							</div>
+						</div>
+						<div class="info__evaporation">
+							<div class="info__circle"></div>
+							<div class="info__content">
+								<span>Осадки</span>
+							</div>
+							<div class="info__mean">
+								<span>{{this.weather.description}}</span>
+							</div>
+						</div>
+						<div class="info__wind">
+							<div class="info__circle"></div>
+							<div class="info__content">
+								<span>Ветер</span>
+							</div>
+							<div class="info__mean">
+								<span id="info__mean-wind"></span>
+								<div id="info__mean-arrow"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container__cards cards">
+					<div class="cards__container">
+						<div class="cards__card-item card-item" (click)="this.scrollToTop()"
+							*ngFor="let card of weatherCards; let i = index" (click)="showDataOfTheSelectedDay(i)"
+							(click)="getDirectionOfTheWind(card.wind.speed, card.wind.deg)">
+							<div class="card-item__container">
+								<div class="card-item__day-of-week">
+									<span>{{card.dayOfWeek}}</span>
+								</div>
+								<div class="card-item__date">
+									<span>{{card.date}} {{card.month}}</span>
+								</div>
+								<div class="card-item__icon">
+									<img [src]="card.img" alt="" style="width: 50px; height: 50px;" />
+								</div>
+								<div class="card-item__daytime-temperature">
+									<span>{{card.temp}}</span>
+								</div>
+								<div class="card-item__feels-like-temperature">
+									<span>как {{card.feels_like}}</span>
+								</div>
+								<div class="card-item__additional-information">
+									<span>{{card.description}}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</div>

@@ -1,0 +1,335 @@
+.wrapper {
+	color: white;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 43px auto;
+
+	&__content {
+		display: grid;
+		margin: 20px;
+		gap: 20px;
+	}
+}
+
+.this-day {
+	grid-area: this-day;
+	background: #282931;
+	border-radius: 20px;
+	position: relative;
+
+	&__container {
+		@extend %container;
+		text-align: center;
+	}
+
+	&__temperature {
+		color: #F77F1D;
+		font-size: 96px;
+		width: 100%;
+		text-align: center;
+		letter-spacing: -5px;
+	}
+
+	&__icon {
+		position: absolute;
+		left: 50%;
+		top: 30%;
+		transform: translateX(-50%);
+	}
+
+	&__date {
+		font-size: 40px;
+		line-height: 35px;
+		margin-top: 70px;
+	}
+
+	&__city {
+		@extend %this-day__text-color;
+		margin-top: 20px;
+	}
+}
+
+.info {
+	grid-area: info;
+	background: #282931;
+	border-radius: 20px;
+	position: relative;
+	overflow: hidden;
+
+	&__clouds {
+		position: absolute;
+		width: 500px;
+		left: 200px;
+		top: 10px;
+	}
+
+	&__container {
+		@extend %container;
+		display: grid;
+		grid-template: repeat(4, 60px) / 1fr;
+		grid-template-areas:
+			"thermometer"
+			"humidity"
+			"evaporation"
+			"wind";
+		row-gap: 10px;
+	}
+
+	&__thermometer {
+		position: relative;
+		grid-area: thermometer;
+
+		.info__circle {
+			background: white url('../../../../assets/img/thermometer.png') center/80% 80% no-repeat;
+		}
+	}
+
+	&__humidity {
+		position: relative;
+		grid-area: humidity;
+
+		.info__circle {
+			background: white url('../../../../assets/img/humidity.png') center/80% 80% no-repeat;
+		}
+	}
+
+	&__evaporation {
+		position: relative;
+		grid-area: evaporation;
+
+		.info__circle {
+			background: white url('../../../../assets/img/evaporation.png') center/80% 80% no-repeat;
+		}
+	}
+
+	&__wind {
+		position: relative;
+		grid-area: wind;
+
+		.info__circle {
+			background: white url('../../../../assets/img/wind.png') center/80% 80% no-repeat;
+		}
+	}
+
+	&__circle {
+		width: 38px;
+		height: 38px;
+		border-radius: 50%;
+		margin-top: 10px;
+		display: inline-block;
+	}
+
+	&__content {
+		position: absolute;
+		display: inline-block;
+		color: #939CB0;
+		left: 50px;
+		top: 22px;
+		font-size: 14px;
+		line-height: 17px;
+	}
+
+	&__mean {
+		display: inline-block;
+		position: absolute;
+		left: 150px;
+		top: 24px;
+	}
+
+	#info__mean-arrow {
+		position: absolute;
+		width: 5px;
+		height: 5px;
+		border-left: 2.5px solid transparent;
+		border-right: 2.5px solid transparent;
+		border-top: 8px solid;
+		display: inline-block;
+		margin-left: 5px;
+		margin-top: 2px;
+	}
+}
+
+.cards {
+	grid-area: cards;
+}
+
+.card-item {
+	border-radius: 10px;
+
+	&__day-of-week {
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 22px;
+	}
+
+	&__date {
+		font-size: 14px;
+		line-height: 17px;
+		color: #939CB0;
+	}
+
+	&__icon {
+		margin: 10px 0px 10px 0px;
+	}
+
+	&__daytime-temperature {
+		font-size: 18px;
+		line-height: 22px;
+	}
+
+	&__feels-like-temperature {
+		font-size: 13px;
+		line-height: 16px;
+		color: #939CB0;
+	}
+
+	&__additional-information {
+		font-size: 13px;
+		line-height: 16px;
+		color: #939CB0;
+	}
+}
+
+.card-item:hover {
+	box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+}
+
+@media (max-width: 767px) {
+	.container__content {
+		grid-template: repeat(2, 300px) 1fr / minmax(100px, 767px);
+		grid-template-areas:
+			"this-day "
+			"info"
+			"cards ";
+		margin-top: 60px;
+	}
+
+	.cards__container {
+		display: grid;
+		grid-template: repeat(7, 70px) / minmax(100px, 767px);
+		gap: 10px;
+	}
+
+	.card-item {
+		background: #282931;
+
+		&__container {
+			position: relative;
+		}
+
+		&__day-of-week {
+			display: inline-block;
+			position: absolute;
+			margin: 10px 0px 10px 0px;
+			left: 20px;
+		}
+
+		&__date {
+			display: inline-block;
+			position: absolute;
+			margin: 35px 0px 0px 20px;
+		}
+
+		&__icon {
+			display: inline-block;
+			position: absolute;
+			right: 20px;
+		}
+
+		&__daytime-temperature {
+			display: inline-block;
+			position: absolute;
+			left: 40%;
+			top: 15px;
+		}
+
+		&__feels-like-temperature {
+			display: inline-block;
+			position: absolute;
+			left: 40%;
+			top: 40px;
+		}
+
+		&__additional-information {
+			height: 100%;
+			width: 80px;
+			margin-top: 5px;
+			display: inline-block;
+			position: absolute;
+			right: 24%;
+			top: 17px;
+			text-align: center;
+		}
+	}
+}
+
+@media (max-width: 488px) {
+	.card-item__day-of-week {
+		left: 10%;
+	}
+
+	.card-item__date {
+		left: 5%;
+	}
+
+	.card-item__daytime-temperature {
+		left: 40%;
+	}
+
+	.card-item__feels-like-temperature {
+		left: 48%;
+	}
+
+	.card-item__additional-information {
+		display: none;
+	}
+}
+
+@media (min-width: 767px) {
+	.container__content {
+		grid-template: repeat(2, 150px) 240px / repeat(3, minmax(101px, 133px)) repeat(5, minmax(55px, 150px));
+		grid-template-areas:
+			"this-day this-day this-day	info info info info info"
+			"this-day this-day this-day	info info info info info"
+			"cards cards cards cards cards cards cards cards";
+	}
+
+	.cards {
+		background: #282931;
+		border-radius: 20px;
+
+		&__container {
+			margin: 20px auto;
+			display: flex;
+			justify-content: space-around;
+		}
+	}
+
+	.card-item {
+		width: 149px;
+		height: 200px;
+		background: #1b1c1d;
+		margin: 0px 5px 0px 5px;
+
+		&__container {
+			margin: 10px;
+		}
+
+		&__additional-information {
+			margin-top: 2px;
+		}
+	}
+}
+
+%this-day__text-color {
+	line-height: 30px;
+	color: #939CB0;
+	font-size: 25px;
+}
+
+%container {
+	margin: 20px;
+	position: relative;
+}
